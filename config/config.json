@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "button-test-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/buttonTest/ButtonTestWebPart.js",
+          "manifest": "./src/webparts/buttonTest/ButtonTestWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ButtonTestWebPartStrings": "lib/webparts/buttonTest/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,92 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.buttonTest {
+	overflow: hidden;
+	padding: 1em;
+	color: '[theme:bodyText, default: #323130]';
+	color: var(--bodyText);
+	&.teams {
+		font-family: $ms-font-family-fallbacks;
+	}
+}
+
+// div[data-automation-id='propertyPanePageContent'] {           ты можешь это доделать после того как закончишь все остальное,
+// 	border: 1px solid red;                                       это проперти пэйн стили мы меняли с Янником
+// 	div[data-automation-id='propertyPaneGroupField'] {
+// 		// border: 1px solid red;                                  нужно выровнять чекбоксы
+// 		.fui-Checkbox {
+// 			input[id='checkbox20'] {
+// 				margin: 0 !important;
+// 			}
+// 		}
+// 	}
+// }
+
+.welcome {
+	text-align: center;
+}
+
+.welcomeImage {
+	width: 100%;
+	max-width: 420px;
+}
+
+.links {
+	a {
+		text-decoration: none;
+		color: '[theme:link, default:#03787c]';
+		color: var(
+			--link
+		); 
+
+		&:hover {
+			text-decoration: underline;
+			color: '[theme:linkHovered, default: #014446]';
+			color: var(
+				--linkHovered
+			);
+		}
+	}
+}
+
+.smallButtonSize {
+	height: 10px;
+	width: 10px;
+}
+
+.mediumButtonSize {
+	height: 50px;
+	width: 60px;
+}
+
+.largeButtonSize {
+	height: 100px;
+	width: 100px;
+}
+
+.filled {
+	background-color: yellow;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.iconContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
