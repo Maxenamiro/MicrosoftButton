@@ -22,7 +22,7 @@ This repo contains different samples of PnP React Controls. Following are the to
 
 ## Summary
 
-add img
+<img width="1028" alt="Screenshot 2025-01-23 at 14 28 32" src="https://github.com/user-attachments/assets/0d54ed20-eae1-40ef-bce4-2461078d7145" />
 
 ## Used SharePoint Framework Version
 
