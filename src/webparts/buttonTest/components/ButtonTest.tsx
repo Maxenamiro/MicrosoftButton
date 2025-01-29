@@ -30,11 +30,14 @@ export default class ButtonTest extends React.Component<
 		} = this.props
 
 		const { showIcon } = this.state
-		const svgIcon = (
-			<img width="96" height="96" src="https://шmg.icons8.com/emoji/96/middle-finger-light-skin-tone.png"
-				alt="middle-finger-light-skin-tone"
-			/>
-		)
+		// const svgIcon = (
+		// 	<img
+		// 		width='96'
+		// 		height='96'
+		// 		src='https://img.icons8.com/emoji/96/middle-finger-light-skin-tone.png'
+		// 		alt='middle-finger-light-skin-tone'
+		// 	/>
+		// )
 
 		const handleClick = () => {
 			if (buttonUrl) {
@@ -78,7 +81,7 @@ export default class ButtonTest extends React.Component<
 					>
 						{buttonText || 'push me and change me'}
 					</button>
-					{showIcon && <div className={styles.iconContainer}>{svgIcon}</div>}
+					{showIcon}
 				</div>
 			</section>
 		)

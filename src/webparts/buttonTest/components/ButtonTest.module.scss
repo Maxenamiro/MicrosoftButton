@@ -35,37 +35,34 @@
 	a {
 		text-decoration: none;
 		color: '[theme:link, default:#03787c]';
-		color: var(
-			--link
-		); 
+		color: var(--link);
 
 		&:hover {
 			text-decoration: underline;
 			color: '[theme:linkHovered, default: #014446]';
-			color: var(
-				--linkHovered
-			);
+			color: var(--linkHovered);
 		}
 	}
 }
 
 .smallButtonSize {
-	height: 10px;
-	width: 10px;
+	height: 20px;
+	width: 100px;
 }
 
 .mediumButtonSize {
-	height: 50px;
-	width: 60px;
+	height: 40px;
+	width: 200px;
 }
 
 .largeButtonSize {
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: 400px;
 }
 
 .filled {
 	background-color: yellow;
+	z-index: 0;
 }
 
 .fullWidth {
@@ -73,20 +70,38 @@
 }
 
 .alignLeft {
-	text-align: left;
+	display: flex;
+	justify-content: flex-start;
 }
 
 .alignCenter {
-	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 .alignRight {
-	text-align: right;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .iconContainer {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
 }
 
+.buttonDefaultStyle {
+	background-color: #382929;
+	color: white;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: row;
+}
+
+.buttonIcon {
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
+	vertical-align: middle;
+}

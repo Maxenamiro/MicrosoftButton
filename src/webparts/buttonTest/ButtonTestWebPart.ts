@@ -27,12 +27,19 @@ export interface IButtonTestWebPartProps {
 	description: string
 	buttonAlignment: string
 	showIcon: boolean
+	iconUrl: string
 }
 
 export default class ButtonTestWebPart extends BaseClientSideWebPart<IButtonTestWebPartProps> {
 	private _isDarkTheme: boolean = false
 	private _environmentMessage: string = ''
 	props: any
+
+	public async onInit(): Promise<void> {
+		this.properties.buttonAlignment = this.properties.buttonAlignment || 'left'
+
+		return super.onInit()
+	}
 
 	public render(): void {
 		const element: React.ReactElement<IButtonTestProps> = React.createElement(
@@ -51,12 +58,31 @@ export default class ButtonTestWebPart extends BaseClientSideWebPart<IButtonTest
 				environmentMessage: this._environmentMessage,
 				hasTeamsContext: !!this.context.sdks.microsoftTeams,
 				userDisplayName: this.context.pageContext.user.displayName,
-        showIcon: this.properties.showIcon || false 
+				showIcon: this.properties.showIcon || false,
+				iconUrl: this.properties.iconUrl,
 			}
 		)
 
 		ReactDom.render(element, this.domElement)
 	}
+
+
+
+
+  
+	protected onPropertyPaneFieldChanged(
+		propertyPath: string,
+		oldValue: any,
+		newValue: any
+	): void {
+		console.log('asdasdasd', propertyPath, oldValue, newValue)
+	}
+
+
+
+
+
+
 
 	protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
 		if (!currentTheme) {
@@ -88,6 +114,30 @@ export default class ButtonTestWebPart extends BaseClientSideWebPart<IButtonTest
 	}
 
 	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+		const urlValidation = (value: string): string => {
+			console.log('URL для перевірки:', value)
+
+			try {
+				if (!value) {
+					return ''
+				}
+
+				const url = new URL(value)
+				const currentHostname = window.location.hostname
+
+				// Перевірка, чи закінчується hostname URL поточним доменом
+				if (
+					url.hostname !== currentHostname &&
+					!url.hostname.endsWith(`.${currentHostname}`)
+				) {
+					return `URL must contain {comapany}tenant.sharepoint.com ${currentHostname}.`
+				}
+
+				return ''
+			} catch {
+				return 'Wrong URL format'
+			}
+		}
 		return {
 			pages: [
 				{
@@ -165,12 +215,27 @@ export default class ButtonTestWebPart extends BaseClientSideWebPart<IButtonTest
 										},
 									],
 								}),
+								// PropertyPaneToggle('showIcon', {
+								// 	label: 'Show Icon',
+								// 	onText: 'Show',
+								// 	offText: 'Hide',
+								// 	checked: this.properties.showIcon || false,
+								// }),
 								PropertyPaneToggle('showIcon', {
 									label: 'Show Icon',
-									onText: 'Show',
-									offText: 'Hide',
-									checked: this.properties.showIcon || false,
+									onText: 'Yes',
+									offText: 'No',
 								}),
+								// Поле для URL іконки, яке показується тільки якщо showIcon = true
+								...(this.properties.showIcon
+									? [
+											PropertyPaneTextField('iconUrl', {
+												label: 'Link icon',
+												description: 'Insert URL-adress of img or icon.',
+												onGetErrorMessage: urlValidation, // Додаємо валідацію
+											}),
+									  ]
+									: []),
 							],
 						},
 					],

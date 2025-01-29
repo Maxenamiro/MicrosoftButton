@@ -14,4 +14,5 @@ export interface IButtonTestProps {
   buttonType: string;
   buttonlinkTarget: string;
   buttonAlignment: string;
+  iconUrl: string;
 }
